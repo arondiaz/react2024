@@ -1,7 +1,19 @@
+import { useEffect, useState } from "react";
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
+import { db } from "./db/db";
 
 function App() {
+
+  const [guitar, setGuitar] = useState([])
+
+  useEffect(() => {
+    setGuitar(db)
+  
+   
+  }, [])
+  
+
   return (
     <>
       <Header />
@@ -10,7 +22,9 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-          <Guitar />
+          {guitar && guitar.map((item, index)  => (
+            <Guitar key={index}>{item}</Guitar>
+          ))}
         </div>
       </main>
 

@@ -1,6 +1,8 @@
 import React from "react";
 
-const Guitar = () => {
+const Guitar = ({children}) => {
+
+    console.log(children);
   return (
     <>
       <div className="col-md-6 col-lg-4 my-4 row align-items-center">
