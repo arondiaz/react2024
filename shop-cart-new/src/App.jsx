@@ -4,15 +4,11 @@ import Header from "./components/Header";
 import { db } from "./db/db";
 
 function App() {
-
-  const [guitar, setGuitar] = useState([])
+  const [guitar, setGuitar] = useState([]);
 
   useEffect(() => {
-    setGuitar(db)
-  
-   
-  }, [])
-  
+    setGuitar(db);
+  }, []);
 
   return (
     <>
@@ -22,9 +18,8 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-          {guitar && guitar.map((item, index)  => (
-            <Guitar key={index}>{item}</Guitar>
-          ))}
+          {guitar &&
+            guitar.map((item, index) => <Guitar key={index}>{item}</Guitar>)}
         </div>
       </main>
 
