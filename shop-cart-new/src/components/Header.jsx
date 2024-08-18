@@ -1,6 +1,10 @@
 
-const Header = () => {
+const Header = ({cart}) => {
 
+ const {id, name, image, price} = cart
+
+
+ 
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -44,7 +48,7 @@ const Header = () => {
                         />
                       </td>
                       <td>SRV</td>
-                      <td className="fw-bold">$299</td>
+                      <td className="fw-bold">{price}</td>
                       <td className="flex align-items-start gap-4">
                         <button type="button" className="btn btn-dark">
                           -

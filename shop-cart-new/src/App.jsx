@@ -1,25 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
 import { db } from "./db/db";
 
 function App() {
-  const [guitar, setGuitar] = useState([]);
+  const [guitar, setGuitar] = useState(db);
+  const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    setGuitar(db);
-  }, []);
+  // useEffect(() => {
+  //   setGuitar(db);
+  // }, []);
+
+  const addToCart = (item) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
 
   return (
     <>
-      <Header />
+      <Header cart={cart} />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
           {guitar &&
-            guitar.map((item, index) => <Guitar key={index}>{item}</Guitar>)}
+            guitar.map((item, index) => (
+              <Guitar key={index} item={item} addToCart={addToCart}>
+                {" "}
+              </Guitar>
+            ))}
         </div>
       </main>
 
