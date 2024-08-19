@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useMemo } from "react";
 
 const Header = ({ cart }) => {
-  const isCartEmpty = () => cart.length === 0;
-  const cartTotal = () =>
-    cart.reduce((total, item) => total + (item.quantity * item.price), 0);
+  const isCartEmpty = useMemo(() => cart.length === 0, [cart]);
+  const cartTotal = useMemo(
+    () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
+    [cart]
+  );
 
   return (
     <header className="py-5 header">
@@ -27,7 +30,7 @@ const Header = ({ cart }) => {
               />
 
               <div id="carrito" className="bg-white p-3">
-                {isCartEmpty() ? (
+                {isCartEmpty ? (
                   <p className="text-center">El carrito esta vacio</p>
                 ) : (
                   <>
@@ -77,7 +80,7 @@ const Header = ({ cart }) => {
                     </table>
 
                     <p className="text-end">
-                      Total pagar: <span className="fw-bold">${cartTotal()}</span>
+                      Total pagar: <span className="fw-bold">${cartTotal}</span>
                     </p>
                     <button className="btn btn-dark w-100 mt-3 p-2">
                       Vaciar Carrito
