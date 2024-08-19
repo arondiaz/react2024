@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
@@ -12,12 +13,22 @@ function App() {
   // }, []);
 
   const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+    const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
+    if (itemExists === -1) {
+      //no existe el producto en el carrito
+      item.quantity = 1;
+      return setCart((prevCart) => [...prevCart, item]);
+    } else {
+      //ya existe el producto en el carrito
+      const updateQuantity = [...cart];
+      updateQuantity[itemExists].quantity++;
+      setCart(updateQuantity);
+    }
   };
 
   return (
     <>
-      <Header cart={cart} />
+      <Header />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

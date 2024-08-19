@@ -1,7 +1,7 @@
 
-const Header = ({cart}) => {
+const Header = () => {
 
- const {id, name, image, price} = cart
+
 
 
  
@@ -48,7 +48,7 @@ const Header = ({cart}) => {
                         />
                       </td>
                       <td>SRV</td>
-                      <td className="fw-bold">{price}</td>
+                      <td className="fw-bold"></td>
                       <td className="flex align-items-start gap-4">
                         <button type="button" className="btn btn-dark">
                           -
