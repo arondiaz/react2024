@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useMemo } from "react";
 
-const Header = ({ cart }) => {
+const Header = ({ cart, removeFromCart }) => {
   const isCartEmpty = useMemo(() => cart.length === 0, [cart]);
   const cartTotal = useMemo(
     () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
@@ -70,6 +70,7 @@ const Header = ({ cart }) => {
                                 <button
                                   className="btn btn-danger"
                                   type="button"
+                                  onClick={() => removeFromCart(guitar.id)}
                                 >
                                   X
                                 </button>
