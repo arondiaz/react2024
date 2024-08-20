@@ -30,9 +30,42 @@ function App() {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
+  const incrementItem = (guitar) => {
+    const guitarToIncrement = cart.map((item) => {
+      if (item.id === guitar) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+      return item;
+    });
+    setCart(guitarToIncrement);
+  };
+
+  const decrementItem = (id) => {
+    const guitarToDecrement = cart.map((item) => {
+      if (item.id === id && item.quantity > 1) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+
+      return item;
+    });
+
+    setCart(guitarToDecrement);
+  };
+
   return (
     <>
-      <Header cart={cart} removeFromCart={removeFromCart} />
+      <Header
+        cart={cart}
+        removeFromCart={removeFromCart}
+        incrementItem={incrementItem}
+        decrementItem={decrementItem}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
