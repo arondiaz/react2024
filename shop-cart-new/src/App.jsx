@@ -58,6 +58,10 @@ function App() {
     setCart(guitarToDecrement);
   };
 
+  const cleanCart = () => {
+    setCart([]);
+  };
+
   return (
     <>
       <Header
@@ -65,6 +69,7 @@ function App() {
         removeFromCart={removeFromCart}
         incrementItem={incrementItem}
         decrementItem={decrementItem}
+        cleanCart={cleanCart}
       />
 
       <main className="container-xl mt-5">
