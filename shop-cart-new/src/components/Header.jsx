@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useMemo } from "react";
 
-const Header = ({ cart, removeFromCart, incrementItem, decrementItem, cleanCart }) => {
+const Header = ({
+  cart,
+  removeFromCart,
+  incrementItem,
+  decrementItem,
+  cleanCart,
+}) => {
   const isCartEmpty = useMemo(() => cart.length === 0, [cart]);
   const cartTotal = useMemo(
     () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
@@ -16,7 +22,7 @@ const Header = ({ cart, removeFromCart, incrementItem, decrementItem, cleanCart 
             <a href="index.html">
               <img
                 className="img-fluid"
-                src="./public/img/logo.svg"
+                src="/img/logo.svg"
                 alt="imagen logo"
               />
             </a>
@@ -25,7 +31,7 @@ const Header = ({ cart, removeFromCart, incrementItem, decrementItem, cleanCart 
             <div className="carrito">
               <img
                 className="img-fluid"
-                src="./public/img/carrito.png"
+                src="/img/carrito.png"
                 alt="imagen carrito"
               />
 
@@ -58,14 +64,19 @@ const Header = ({ cart, removeFromCart, incrementItem, decrementItem, cleanCart 
                               <td>{guitar.name}</td>
                               <td className="fw-bold">{guitar.price}</td>
                               <td className="flex align-items-start gap-4">
-                                <button type="button" className="btn btn-dark"
-                                onClick={() => decrementItem(guitar.id)}
+                                <button
+                                  type="button"
+                                  className="btn btn-dark"
+                                  onClick={() => decrementItem(guitar.id)}
                                 >
                                   -
                                 </button>
                                 {guitar.quantity}
-                                <button type="button" className="btn btn-dark"
-                                onClick={() =>  incrementItem(guitar.id)}>
+                                <button
+                                  type="button"
+                                  className="btn btn-dark"
+                                  onClick={() => incrementItem(guitar.id)}
+                                >
                                   +
                                 </button>
                               </td>
@@ -86,7 +97,10 @@ const Header = ({ cart, removeFromCart, incrementItem, decrementItem, cleanCart 
                     <p className="text-end">
                       Total pagar: <span className="fw-bold">${cartTotal}</span>
                     </p>
-                    <button className="btn btn-dark w-100 mt-3 p-2" onClick={cleanCart}>
+                    <button
+                      className="btn btn-dark w-100 mt-3 p-2"
+                      onClick={cleanCart}
+                    >
                       Vaciar Carrito
                     </button>
                   </>

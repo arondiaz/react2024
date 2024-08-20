@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 const Guitar = ({ item, addToCart }) => {
-  const { id, name, price, image, description } = item;
+  const { name, price, image, description } = item;
 
   return (
     <>
