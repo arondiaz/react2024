@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import useCart from "./hooks/useCart";
 
 function App() {
-  const { cart, incrementItem, decrementItem,cleanCart,addToCart,removeFromCart,guitar} = useCart();
+  const {cart,incrementItem,decrementItem,cleanCart,addToCart,removeFromCart,guitar,isCartEmpty,cartTotal} = useCart();
 
   return (
     <>
@@ -13,6 +13,8 @@ function App() {
         incrementItem={incrementItem}
         decrementItem={decrementItem}
         cleanCart={cleanCart}
+        isCartEmpty={isCartEmpty}
+        cartTotal={cartTotal}
       />
 
       <main className="container-xl mt-5">
