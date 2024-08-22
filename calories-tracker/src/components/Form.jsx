@@ -3,13 +3,20 @@ import categories from "../data/categories";
 
 const Form = () => {
   const [form, setForm] = useState({
-    category: "",
+    category: 1,
     activity: "",
     calories: 0,
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
+    setForm({
+      ...form,
+      [e.target.id]: e.target.value === "" ? "" : isNaN(e.target.value)
+        ? e.target.value
+        : Number(e.target.value),
+    });
+
+    console.log(form);
   };
 
   return (
