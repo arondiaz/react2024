@@ -11,12 +11,19 @@ const Form = () => {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.id]: e.target.value === "" ? "" : isNaN(e.target.value)
-        ? e.target.value
-        : Number(e.target.value),
+      [e.target.id]:
+        e.target.value === ""
+          ? ""
+          : isNaN(e.target.value)
+          ? e.target.value
+          : Number(e.target.value),
     });
+  };
 
-    console.log(form);
+  const validation = () => {
+    const { activity, calories } = form;
+
+    return activity.trim() !== "" && calories > 0;
   };
 
   return (
@@ -64,8 +71,9 @@ const Form = () => {
 
       <input
         type="submit"
-        value="Agregar"
-        className="w-full bg-gray-600 cursor-pointer border rounded-lg text-white p-2 uppercase text-lg hover:bg-gray-500 ease-in-out"
+        value={form.category === 1 ? "Agregar comida" : "Agregar ejercicio"}
+        className="w-full bg-gray-600 cursor-pointer border rounded-lg text-white p-2 uppercase text-lg hover:bg-gray-500 ease-in-out disabled:opacity-30"
+        disabled={!validation()}
       />
     </form>
   );
