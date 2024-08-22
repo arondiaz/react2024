@@ -26,8 +26,17 @@ const Form = () => {
     return activity.trim() !== "" && calories > 0;
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submit");
+  };
+
   return (
-    <form action="" className="space-y-5 bg-white shadow p-10 rounded-lg">
+    <form
+      action=""
+      className="space-y-5 bg-white shadow p-10 rounded-lg"
+      onSubmit={handleSubmit}
+    >
       <div className="grid grid-cols-1 gap-3">
         <label htmlFor="category">Categoría:</label>
         <select
