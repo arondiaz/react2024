@@ -1,7 +1,16 @@
+import { useState } from "react";
 import categories from "../data/categories";
 
 const Form = () => {
-  console.log(categories);
+  const [form, setForm] = useState({
+    category: "",
+    activity: "",
+    calories: 0,
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
 
   return (
     <form action="" className="space-y-5 bg-white shadow p-10 rounded-lg">
@@ -11,6 +20,8 @@ const Form = () => {
           name=""
           id="category"
           className="border border-slate-300 p-2 rounded-sm bg-white w-full"
+          value={form.category}
+          onChange={handleChange}
         >
           {categories.map((item) => (
             <option key={item.id} value={item.id}>
@@ -27,6 +38,8 @@ const Form = () => {
           id="activity"
           className="border  border-slate-300 p-2 rounded-sm bg-white w-full"
           placeholder="Ingrese la comida o el ejercicio"
+          value={form.activity}
+          onChange={handleChange}
         />
       </div>
 
@@ -37,6 +50,8 @@ const Form = () => {
           id="calories"
           className="border  border-slate-300 p-2 rounded-sm bg-white w-full"
           placeholder="Ingrese el número de calorías"
+          value={form.calories}
+          onChange={handleChange}
         />
       </div>
 
