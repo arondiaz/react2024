@@ -1,8 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import swAlert from "@sweetalert/with-react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  
+  const navigate = useNavigate();
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -36,6 +40,7 @@ const Form = () => {
       swAlert(<h2> Inicio de sesión exitoso! </h2>);
       const dataToken = response.data.token;
       localStorage.setItem("token", dataToken);
+      navigate("/list");
     });
   };
 
