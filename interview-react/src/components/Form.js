@@ -1,5 +1,5 @@
-import React from "react";
 import { useState } from "react";
+import axios from "axios"
 
 const Form = () => {
   const [loginData, setLoginData] = useState({
@@ -29,6 +29,9 @@ const Form = () => {
     if (email !== "challenge@alkemy.org" || password !== "react") {
       return console.log("Credenciales inválidas");
     }
+
+    const url = "http://challenge-react.alkemy.org"
+    axios.post(url, loginData).then(response => {console.log(response.data);} )
   };
 
   return (
