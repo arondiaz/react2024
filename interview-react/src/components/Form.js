@@ -34,7 +34,8 @@ const Form = () => {
     const url = "http://challenge-react.alkemy.org";
     axios.post(url, loginData).then((response) => {
       swAlert(<h2> Inicio de sesión exitoso! </h2>);
-      console.log(response.data);
+      const dataToken = response.data.token;
+      localStorage.setItem("token", dataToken);
     });
   };
 
