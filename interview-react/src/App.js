@@ -7,14 +7,16 @@ import "./css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="container">
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Form />} />
-        <Route path="/list" element={<List />} />
-      </Routes>
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/" element={<Form />} />
+          <Route path="/list" element={<List />} />
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
