@@ -1,16 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 const List = () => {
-  const navigate = useNavigate();
+  let token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token === null) {
-      navigate("/");
-    }
-  }, [navigate]);
+  if (!token) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>

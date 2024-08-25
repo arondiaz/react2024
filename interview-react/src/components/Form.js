@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import swAlert from "@sweetalert/with-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -42,6 +42,12 @@ const Form = () => {
       navigate("/list");
     });
   };
+
+  let token = localStorage.getItem("token");
+
+  if (token) {
+    return <Navigate to="/list" />;
+  }
 
   return (
     <>
