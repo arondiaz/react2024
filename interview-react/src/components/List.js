@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Item from "./Item";
 
 const List = () => {
   let token = localStorage.getItem("token");
@@ -17,15 +19,20 @@ const List = () => {
     });
   }, [setMovieList]);
 
-  console.log(movieList);
-
   if (!token) {
     return <Navigate to="/" />;
   }
 
   return (
     <>
-      <h1>Listadooo</h1>
+      <div className="container mt-4">
+        <h3>Listado</h3>
+        <div className="row">
+          {movieList.map((movie, index) => (
+            <Item movie={movie} key={index} />
+          ))}
+        </div>
+      </div>
     </>
   );
 };
