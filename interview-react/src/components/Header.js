@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const logOut = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,6 +34,13 @@ const Header = () => {
                 <Link className="nav-link" to="/contact">
                   Contacto
                 </Link>
+              </li>
+              <li className="nav-item">
+                {token && (
+                  <button className=" btn btn-danger" onClick={logOut}>
+                    Cerrar Sesión
+                  </button>
+                )}
               </li>
             </ul>
           </div>

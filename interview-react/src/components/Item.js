@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 const Item = ({ movie }) => {
   const { id, title, overview, poster_path } = movie;
 
-
-
-
   return (
     <div className="col-3">
       <div className="card my-4">
