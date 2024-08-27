@@ -3,6 +3,7 @@ import Form from "./components/Form";
 import List from "./components/List";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Details from "./components/Details"
 import "./css/bootstrap.min.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Form />} />
           <Route path="/list" element={<List />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </div>
       <Footer />

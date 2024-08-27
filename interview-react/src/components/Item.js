@@ -1,7 +1,10 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Item = ({ movie }) => {
-  const { title, overview, poster_path } = movie;
+  const { id, title, overview, poster_path } = movie;
+
+
+
 
   return (
     <div className="col-3">
@@ -14,6 +17,8 @@ const Item = ({ movie }) => {
         <div className="card-body">
           <h5 className="card-title">{title.substring(0, 22)}</h5>
           <p className="card-text">{overview.substring(0, 55)}...</p>
+          <button><Link to={`/details?movieID=${id}`}>Detalles</Link></button>
+          {/* <button><Link to={`/details/${id}`}>Detalles</Link></button> */}
         </div>
       </div>
     </div>
