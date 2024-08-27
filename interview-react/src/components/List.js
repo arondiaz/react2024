@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Item from "./Item";
+import swAlert from "@sweetalert/with-react";
+
 
 const List = () => {
   let token = localStorage.getItem("token");
@@ -16,7 +17,10 @@ const List = () => {
     axios.get(url).then((response) => {
       const apiData = response.data;
       setMovieList(apiData.results);
-    });
+    })
+    .catch(error => {
+      return swAlert(`Error al traer datos`);
+    })
   }, [setMovieList]);
 
   if (!token) {
