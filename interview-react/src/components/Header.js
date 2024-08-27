@@ -35,15 +35,14 @@ const Header = () => {
                   Contacto
                 </Link>
               </li>
-              <li className="nav-item">
-                {token && (
-                  <button className=" btn btn-danger" onClick={logOut}>
-                    Cerrar Sesión
-                  </button>
-                )}
-              </li>
             </ul>
           </div>
+
+          {token && (
+            <button className=" btn btn-danger" onClick={logOut}>
+              Cerrar Sesión
+            </button>
+          )}
         </div>
       </nav>
     </>
