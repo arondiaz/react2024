@@ -4,6 +4,7 @@ import List from "./components/List";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Details from "./components/Details"
+import Result from "./components/Result";
 import "./css/bootstrap.min.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Form />} />
           <Route path="/list" element={<List />} />
           <Route path="/details" element={<Details />} />
+          <Route path="/result" element={<Result/>}/>
         </Routes>
       </div>
       <Footer />

@@ -1,11 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [busqueda, setBusqueda] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(busqueda);
+
+    navigate(`/result?busqueda=${busqueda}`);
+
+    setBusqueda("");
   };
 
   return (
@@ -18,6 +24,7 @@ const Search = () => {
             className="form-control"
             placeholder="busca la pelicula"
             onChange={(e) => setBusqueda(e.target.value)}
+            value={busqueda}
           />
         </div>
 
