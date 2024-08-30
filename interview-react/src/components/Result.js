@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import swAlert from "@sweetalert/with-react";
 import axios from "axios";
 
 const Result = () => {
@@ -13,10 +14,18 @@ const Result = () => {
   useEffect(() => {
     const apiKey = process.env.REACT_APP_API_KEY;
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&include_adult=false&language=en-US&query=${searchResult}&page=1`;
-    axios.get(url).then((response) => {
-      const searchResults = response.data.results;
-      setUserSearch(searchResults);
-    });
+    axios
+      .get(url)
+      .then((response) => {
+        const apiResults = response.data.results;
+        if (apiResults.length === 0) {
+          return swAlert(<h3>Sin resultados</h3>);
+        }
+        setUserSearch(apiResults);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [searchResult]);
 
   console.log(userSearch);
@@ -57,6 +66,13 @@ const Result = () => {
                       <strong>Fecha de lanzamiento:</strong>{" "}
                       {result.release_date}
                     </p>
+
+                    <Link
+                      to={`/details?movieID=${result.id}`}
+                      className="btn btn-primary"
+                    >
+                      Detalles
+                    </Link>
                   </div>
                 </div>
               </div>
