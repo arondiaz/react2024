@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import Search from "./Search";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -37,6 +38,8 @@ const Header = () => {
               </li>
             </ul>
           </div>
+
+          <Search />
 
           {token && (
             <button className=" btn btn-danger" onClick={logOut}>

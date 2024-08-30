@@ -49,13 +49,13 @@ const Details = () => {
               <h4>Lanzamiento: {release_date}</h4>
               <p>{overview}</p>
 
-              {/* <ul>
+               {/* <ul>
                 {genres.length > 0 ? (
-                  genres.map((oneGenre) => <li>{oneGenre.name}</li>)
+                  genres.map((oneGenre, index) => <li key={index}>{oneGenre.name}</li>)
                 ) : (
                   <li> No hay generos</li>
                 )}
-              </ul> */}
+              </ul>  */}
 
               <Link to={homepage} target="_blank" className="btn btn-primary">
                 Visitar
