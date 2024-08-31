@@ -3,9 +3,9 @@ import Form from "./Form";
 const Inicio = () => {
   return (
     <>
-      <h1>Incio</h1>
-
-      <Form />
+      <div>
+        <Form />
+      </div>
     </>
   );
 };

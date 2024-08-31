@@ -20,9 +20,9 @@ const Films = () => {
 
     async function fetcher() {
       try {
-        const response = await fetch(url);
-        const request = await response.json();
-        setFilms(request.results);
+        const request = await fetch(url);
+        const response = await request.json();
+        setFilms(response.results);
       } catch (error) {
         console.log(error);
       }

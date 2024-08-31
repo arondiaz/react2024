@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Films from "./components/Films";
 import Favourites from "./components/Favourites";
+import Detail from "./components/Detail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Inicio />} />
         <Route path="/films" element={<Films />} />
         <Route path="/favorites" element={<Favourites />} />
+        <Route path="/detail" element={<Detail />} />
       </Routes>
     </>
   );

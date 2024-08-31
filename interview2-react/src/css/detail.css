@@ -1,0 +1,50 @@
+.container-detail {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .container-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .movie-info {
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+    
+  }
+  
+  .movie-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info p {
+    margin: 5px 0;
+  }
+  
+  .movie-info button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .movie-info button a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .movie-info button:hover {
+    background-color: #0056b3;
+  }
+  
