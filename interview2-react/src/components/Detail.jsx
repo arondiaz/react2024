@@ -21,7 +21,6 @@ const Detail = () => {
 
     const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
     const url = `https://api.themoviedb.org/3/movie/${urlID}?api_key=${apiKey}&language=en-US`;
-    console.log(url);
     async function fetcher() {
       try {
         const response = await fetch(url);
@@ -37,8 +36,6 @@ const Detail = () => {
     fetcher();
   }, [urlID]);
 
-  console.log(filmDetails);
-
   const {
     homepage,
     origin_country,
@@ -47,6 +44,7 @@ const Detail = () => {
     release_date,
     poster_path,
   } = filmDetails;
+
   return (
     <>
       {loading ? (
@@ -78,7 +76,7 @@ const Detail = () => {
               <strong>Fecha de lanzamiento:</strong> {release_date}
             </p>
 
-            <button>
+            <button className="btn-visit">
               <Link to={homepage} target="_blank" rel="noopener noreferrer">
                 Visitar
               </Link>

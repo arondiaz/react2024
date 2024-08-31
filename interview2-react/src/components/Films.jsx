@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Film from "./Film";
 
-const Films = () => {
+// eslint-disable-next-line react/prop-types
+const Films = ({addOrRemoveFromFavs}) => {
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Films = () => {
   return (
     <>
       <h3>Peliculas</h3>
-      <div>{films.length > 0 ? <Film films={films} /> : ""}</div>
+      <div>{films.length > 0 ? <Film films={films} addOrRemoveFromFavs={addOrRemoveFromFavs}/> : ""}</div>
     </>
   );
 };
