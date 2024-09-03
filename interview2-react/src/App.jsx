@@ -7,10 +7,20 @@ import Favourites from "./components/Favourites";
 import Detail from "./components/Detail";
 
 function App() {
+  const favs = localStorage.getItem("favs");
+
+  let tempFavsMovies;
+
+  if (favs === null) {
+    tempFavsMovies = [];
+  } else {
+    tempFavsMovies = JSON.parse(favs);
+  }
+
   const addOrRemoveFromFavs = (e) => {
     const btnParent = e.target.parentElement;
     const img = btnParent.querySelector("img").getAttribute("src");
-    const title = btnParent.querySelector("h3").innerHTML;
+    const title = btnParent.querySelector("h3").innerText;
 
     const objFav = {
       img,
@@ -18,7 +28,8 @@ function App() {
       id: e.target.dataset.movieId,
     };
 
-    console.log(objFav);
+    tempFavsMovies.push(objFav);
+    localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
   };
 
   return (
