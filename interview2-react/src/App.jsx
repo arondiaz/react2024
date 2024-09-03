@@ -32,12 +32,18 @@ function App() {
     let detectDuplicateMovie = tempFavsMovies.find((oneMovie) => {
       return oneMovie.id === objFav.id;
     });
+    //Si la pelicula no esta en el array tempFavsMovies, lo agrega
     if (detectDuplicateMovie === undefined) {
       tempFavsMovies.push(objFav);
       localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
       toast.success(`${objFav.title} agregado a Favoritos!`);
     } else {
-      return toast.error("La película ya existe en Favoritos");
+      // Si la película ya existe en el array, reasigna el array sin la pelicula duplicada
+      tempFavsMovies = tempFavsMovies.filter((oneMovie) => {
+        return oneMovie.id !== objFav.id;
+      });
+      localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
+      toast.error(`${objFav.title} eliminado de Favoritos`);
     }
   };
 
