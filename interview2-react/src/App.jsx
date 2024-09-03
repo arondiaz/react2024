@@ -8,17 +8,17 @@ import Detail from "./components/Detail";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  const favs = localStorage.getItem("favs");
-
-  let tempFavsMovies;
-
-  if (favs === null) {
-    tempFavsMovies = [];
-  } else {
-    tempFavsMovies = JSON.parse(favs);
-  }
-
   const addOrRemoveFromFavs = (e) => {
+    const favs = localStorage.getItem("favs");
+
+    let tempFavsMovies;
+
+    if (favs === null) {
+      tempFavsMovies = [];
+    } else {
+      tempFavsMovies = JSON.parse(favs);
+    }
+
     const btnParent = e.target.parentElement;
     const img = btnParent.querySelector("img").getAttribute("src");
     const title = btnParent.querySelector("h3").innerText;
