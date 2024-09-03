@@ -28,8 +28,16 @@ function App() {
       id: e.target.dataset.movieId,
     };
 
-    tempFavsMovies.push(objFav);
-    localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
+    let detectDuplicateMovie = tempFavsMovies.find((oneMovie) => {
+      return oneMovie.id === objFav.id;
+    });
+    if (detectDuplicateMovie === undefined) {
+      tempFavsMovies.push(objFav);
+      localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
+      console.log(`${objFav.title} agregado a Favoritos`);
+    } else {
+      return console.log("El elemento ya existe en favoritos");
+    }
   };
 
   return (
