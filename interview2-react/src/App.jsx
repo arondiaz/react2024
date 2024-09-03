@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Films from "./components/Films";
 import Favourites from "./components/Favourites";
 import Detail from "./components/Detail";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const favs = localStorage.getItem("favs");
@@ -34,14 +35,16 @@ function App() {
     if (detectDuplicateMovie === undefined) {
       tempFavsMovies.push(objFav);
       localStorage.setItem("favs", JSON.stringify(tempFavsMovies));
-      console.log(`${objFav.title} agregado a Favoritos`);
+      toast.success(`${objFav.title} agregado a Favoritos!`);
     } else {
-      return console.log("El elemento ya existe en favoritos");
+      return toast.error("La película ya existe en Favoritos");
     }
   };
 
   return (
     <>
+      <Toaster />
+
       <Header />
 
       <Routes>
