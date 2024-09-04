@@ -1,27 +1,18 @@
 import "../css/favourites.css";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Favourites = () => {
-  let existFav = localStorage.getItem("favs");
+  const [favorites, setFavorites] = useState([]);
 
-  let favsArray = existFav ? JSON.parse(existFav) : [];
+  useEffect(() => {
+    let existFav = localStorage.getItem("favs");
+    if (existFav) {
+      setFavorites(JSON.parse(existFav));
+    }
+  }, []);
 
   const navigate = useNavigate();
-  // function goToDetail(id) {
-  //   const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
-  //   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
-
-  //   console.log(url);
-
-  //   async function callApi() {
-  //     const response = await fetch(url);
-  //     const request = await response.json();
-  //     console.log(request);
-  //   }
-
-  //   callApi();
-  // }
 
   const redirectToDetails = (id) => {
     navigate(`/detail?filmId=${id}`);
@@ -31,8 +22,8 @@ const Favourites = () => {
     <>
       <h2 className="fav-title">Favoritos</h2>
       <div className="container-fav">
-        {existFav.length > 0 ? (
-          favsArray.map((movFav) => (
+        {favorites.length > 0 ? (
+          favorites.map((movFav) => (
             <div className="card-fav" key={movFav.id}>
               <img
                 className="fav-img"
