@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Details from "./components/Details";
 import Result from "./components/Result";
+import Favorites from "./components/Favorites";
 import "./css/bootstrap.min.css";
 
 function App() {
@@ -25,15 +26,10 @@ function App() {
     // Obtener los favoritos del localStorage
     const existFavoritesInLocal = localStorage.getItem("favs");
 
-    console.log(existFavoritesInLocal);
-
     // Convertir el string JSON a un array, o inicializar como un array vacío si no existe
     let conditionalStorage = existFavoritesInLocal
       ? JSON.parse(existFavoritesInLocal)
       : [];
-
-
-      console.log(conditionalStorage);
 
     // Verificar si la película ya está en favoritos
     let existFilm = conditionalStorage.some(
@@ -41,14 +37,12 @@ function App() {
     );
 
     //existFilm, true si esta sino false-
-
     if (existFilm) {
       conditionalStorage = conditionalStorage.filter(
         (oneFilm) => oneFilm.id !== objFav.id
       );
     } else {
       conditionalStorage.push(objFav);
-      console.log("aggregado");
     }
 
     localStorage.setItem("favs", JSON.stringify(conditionalStorage));
@@ -68,6 +62,7 @@ function App() {
           />
           <Route path="/details" element={<Details />} />
           <Route path="/result" element={<Result />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </div>
       <Footer />
