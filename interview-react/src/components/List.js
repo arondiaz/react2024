@@ -5,7 +5,7 @@ import Item from "./Item";
 import swAlert from "@sweetalert/with-react";
 
 
-const List = () => {
+const List = ({addOrRemoveFromFavorites}) => {
   let token = localStorage.getItem("token");
 
   const [movieList, setMovieList] = useState([]);
@@ -33,7 +33,7 @@ const List = () => {
         <h3>Listado</h3>
         <div className="row">
           {movieList.map((movie, index) => (
-            <Item movie={movie} key={index} />
+            <Item movie={movie} key={index} addOrRemoveFromFavorites={addOrRemoveFromFavorites} />
           ))}
         </div>
       </div>

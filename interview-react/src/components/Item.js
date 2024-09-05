@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
-const Item = ({ movie }) => {
+const Item = ({ movie, addOrRemoveFromFavorites }) => {
   const { id, title, overview, poster_path } = movie;
+
+
 
   return (
     <div className="col-3">
@@ -14,8 +16,11 @@ const Item = ({ movie }) => {
         <div className="card-body">
           <h5 className="card-title">{title.substring(0, 22)}</h5>
           <p className="card-text">{overview.substring(0, 55)}...</p>
-          <Link to={`/details?movieID=${id}`} className="btn btn-primary">Detalles</Link>
-          {/* <button><Link to={`/details/${id}`}>Detalles</Link></button> */}
+          <Link to={`/details?movieID=${id}`} className="btn btn-primary">
+            Detalles
+          </Link>
+
+          <button className="btn mx-4 btn-danger" data-id={id} onClick={(e) => addOrRemoveFromFavorites(e)}>Agregar a Fav</button>
         </div>
       </div>
     </div>
