@@ -1,22 +1,33 @@
 import { useState } from "react";
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
   const [list, setList] = useState([]);
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+    let existLocal = localStorage.getItem("todo");
+    if (existLocal) {
+      setList(JSON.parse(existLocal));
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // let valueInput = e.target.querySelector("input").value;
 
-    let arr = [];
+    // let arr = [];
 
-    arr.push(input);
+    // arr.push(input);
+    const updatedList = [...list, input];
 
-    setList([...list, arr]);
+    setList(updatedList);
 
     setInput("");
+
+    localStorage.setItem("todo", JSON.stringify(updatedList));
   };
 
   return (
