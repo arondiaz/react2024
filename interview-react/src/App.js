@@ -22,7 +22,36 @@ function App() {
       id: e.target.dataset.id,
     };
 
-    console.log(objFav);
+    // Obtener los favoritos del localStorage
+    const existFavoritesInLocal = localStorage.getItem("favs");
+
+    console.log(existFavoritesInLocal);
+
+    // Convertir el string JSON a un array, o inicializar como un array vacío si no existe
+    let conditionalStorage = existFavoritesInLocal
+      ? JSON.parse(existFavoritesInLocal)
+      : [];
+
+
+      console.log(conditionalStorage);
+
+    // Verificar si la película ya está en favoritos
+    let existFilm = conditionalStorage.some(
+      (oneFilm) => oneFilm.id === objFav.id
+    );
+
+    //existFilm, true si esta sino false-
+
+    if (existFilm) {
+      conditionalStorage = conditionalStorage.filter(
+        (oneFilm) => oneFilm.id !== objFav.id
+      );
+    } else {
+      conditionalStorage.push(objFav);
+      console.log("aggregado");
+    }
+
+    localStorage.setItem("favs", JSON.stringify(conditionalStorage));
   };
 
   return (
