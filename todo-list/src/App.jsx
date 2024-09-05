@@ -8,11 +8,11 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let valueInput = e.target.querySelector("input").value;
+    // let valueInput = e.target.querySelector("input").value;
 
     let arr = [];
 
-    arr.push(valueInput);
+    arr.push(input);
 
     setList([...list, arr]);
 
