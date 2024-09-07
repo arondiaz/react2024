@@ -30,6 +30,12 @@ function App() {
     localStorage.setItem("todo", JSON.stringify(updatedList));
   };
 
+  const deleteAllTasks = () => {
+    console.log("eliminando");
+    localStorage.removeItem("todo");
+    setList([]);
+  };
+
   return (
     <>
       <div>
@@ -52,6 +58,10 @@ function App() {
             <h3>No hay nada</h3>
           )}
         </ul>
+
+        <button onClick={deleteAllTasks} disabled={list.length === 0}>
+          Borrar tareas
+        </button>
       </div>
     </>
   );
