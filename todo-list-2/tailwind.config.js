@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         anton: "'Anton', serif",
-        inter: "'Inter, serif",
+        inter: "'Inter', serif",
       },
     },
   },
