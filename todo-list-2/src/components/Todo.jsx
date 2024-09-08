@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ todo, handleSetComplete }) => {
+const Todo = ({ todo, handleSetComplete, handleSetDelete }) => {
   const { id, title, completed } = todo;
   return (
     <div className="flex items-center justify-between p-4 bg-gray-500 border-b border-solid border-gray-600">
@@ -29,6 +29,7 @@ const Todo = ({ todo, handleSetComplete }) => {
         src="/close-icon.svg"
         alt="close icon"
         className="cursor-pointer h-5 w-5 transition-all duration-300 ease-in"
+        onClick={() => handleSetDelete(id)}
       />
     </div>
   );
