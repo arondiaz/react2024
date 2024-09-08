@@ -6,9 +6,9 @@ const Todo = ({ todo }) => {
     <div className="flex items-center justify-between p-4 bg-gray-500 border-b border-solid border-gray-600">
       <div className="flex items-center">
         {completed ? (
-          <span className="border border-green-700 border-solid p-3 rounded-full cursor-pointer"></span>
+          <span className="border border-green-700 border-solid p-3 mr-4 rounded-full cursor-pointer"></span>
         ) : (
-          <span className="border border-gray-700 border-solid p-3 rounded-full cursor-pointer"></span>
+          <span className="border border-gray-700 border-solid p-3 mr-4 rounded-full cursor-pointer"></span>
         )}
 
         <p className={"pl-3" + (completed && "line-through")}>{title}</p>

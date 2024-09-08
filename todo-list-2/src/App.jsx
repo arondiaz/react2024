@@ -26,7 +26,7 @@ function App() {
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
 
     const newTask = {
-      id: lastId,
+      id: lastId + 1,
       title,
       completed: false,
     };

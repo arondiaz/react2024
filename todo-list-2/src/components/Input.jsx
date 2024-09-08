@@ -3,7 +3,13 @@ import { useState } from "react";
 const Input = ({ addTodo }) => {
   const [input, setInput] = useState("");
 
-  console.log(input);
+  const handleSubmit = (e) => {
+    if (e.code === "Enter") {
+      addTodo(input);
+
+      setInput("");
+    }
+  };
 
   return (
     <div className="mt-6 relative">
@@ -16,7 +22,7 @@ const Input = ({ addTodo }) => {
         placeholder="What's next.."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => console.log(input)}
+        onKeyDown={(e) => handleSubmit(e)}
       />
     </div>
   );
