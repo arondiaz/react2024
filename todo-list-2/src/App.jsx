@@ -38,13 +38,26 @@ function App() {
     setTodos(todoList);
   };
 
+  const handleSetComplete = (id) => {
+    const updatedList = todos.map((todo) => {
+      if (todo.id === id) {
+        //a la tarea que coincide con el id que le hice click, hago una copia de los datos(key: value) y le modifico el valor de la key completed con un ! para alternar true/false
+        return { ...todo, completed: !todo.completed };
+      }
+      console.log(todo);
+      return todo;
+    });
+
+    setTodos(updatedList);
+  };
+
   return (
     <div className="bg-gray-800 font-inter min-h-screen h-full text-gray-100 flex items-center justify-center py-20 px-5">
       <div className="container flex flex-col max-w-xl">
         <Title />
 
         <Input addTodo={addTodo} />
-        <List todos={todos} />
+        <List todos={todos} handleSetComplete={handleSetComplete} />
       </div>
     </div>
   );
