@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import FilterContainer from "./Filters/FilterContainer";
 import Task from "./Task";
 
 const ContainerTasks = ({todo}) => {
@@ -7,6 +8,8 @@ const ContainerTasks = ({todo}) => {
       {todo.map((todo) => (
         <Task todo={todo} key={todo.id}/>
       ))}
+
+      <FilterContainer/>
     </div>
   );
 };
