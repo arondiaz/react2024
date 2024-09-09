@@ -3,9 +3,10 @@ import FilterContainer from "./Filters/FilterContainer";
 import Task from "./Task";
 
 const ContainerTasks = ({todo}) => {
+  console.log(todo);
   return (
     <div className="bg-blue-900 rounded-xl flex flex-col max-w-3xl mt-4">
-      {todo.map((todo) => (
+      {todo && todo.map((todo) => (
         <Task todo={todo} key={todo.id}/>
       ))}
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const Task = ({ todo }) => {
   const { id, title, completed } = todo;
   return (
