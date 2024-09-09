@@ -2,7 +2,7 @@ import React from "react";
 
 const Todo = ({ todo, handleSetComplete, handleSetDelete }) => {
   const { id, title, completed } = todo;
-  console.log(todo);
+
   return (
     <div className="flex items-center justify-between p-4 bg-gray-500 border-b border-solid border-gray-600">
       <div className="flex items-center">

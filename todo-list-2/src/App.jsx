@@ -1,26 +1,13 @@
 import Title from "./components/Title";
 import Input from "./components/Input";
 import List from "./components/List";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Hacer la compra",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Estudiar React",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Pasear al perro",
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
+
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [filteredTodos, setFilteredTodos] = useState(todos);
 
   const addTodo = (title) => {
     const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
@@ -44,7 +31,6 @@ function App() {
         //a la tarea que coincide con el id que le hice click, hago una copia de los datos(key: value) y le modifico el valor de la key completed con un ! para alternar true/false
         return { ...todo, completed: !todo.completed };
       }
-      console.log(todo);
       return todo;
     });
 
@@ -59,6 +45,49 @@ function App() {
     setTodos(updateList);
   };
 
+  //Filters
+
+  const showAllTodos = () => {
+    setActiveFilter("all");
+  };
+
+  const showActiveTodos = () => {
+    setActiveFilter("active");
+  };
+
+  const showCompletedTodos = () => {
+    setActiveFilter("completed");
+  };
+
+  //Limpiar tareas completadas
+  const handleClearCompleted = () => {
+    // Filtra las tareas, manteniendo solo las que no están completadas
+    const updatedList = todos.filter((todo) => !todo.completed);
+    // Actualiza el estado con la lista filtrada
+    setTodos(updatedList);
+  };
+
+  useEffect(() => {
+    switch (activeFilter) {
+      case "all":
+        setFilteredTodos(todos);
+        break;
+
+      case "active":
+        const activeTodos = todos.filter((todos) => todos.completed === false);
+        setFilteredTodos(activeTodos);
+        break;
+
+      case "completed":
+        const completedTodo = todos.filter((todos) => todos.completed === true);
+        setFilteredTodos(completedTodo);
+        break;
+
+      default:
+        break;
+    }
+  }, [activeFilter, todos]);
+
   return (
     <div className="bg-gray-800 font-inter min-h-screen h-full text-gray-100 flex items-center justify-center py-20 px-5">
       <div className="container flex flex-col max-w-xl">
@@ -66,9 +95,14 @@ function App() {
 
         <Input addTodo={addTodo} />
         <List
-          todos={todos}
+          todos={filteredTodos}
           handleSetComplete={handleSetComplete}
           handleSetDelete={handleSetDelete}
+          activeFilter={activeFilter}
+          showAllTodos={showAllTodos}
+          showActiveTodos={showActiveTodos}
+          showCompletedTodos={showCompletedTodos}
+          handleClearCompleted={handleClearCompleted}
         />
       </div>
     </div>
