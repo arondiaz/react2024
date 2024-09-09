@@ -2,8 +2,11 @@ import Title from "./components/Title";
 import Input from "./components/Input";
 import List from "./components/List";
 import { useEffect, useState } from "react";
+import { tasksDB } from "./db.js/tasks";
 
 function App() {
+
+  console.log(tasksDB);
   const [todos, setTodos] = useState([]);
 
   const [activeFilter, setActiveFilter] = useState("all");
