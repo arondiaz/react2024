@@ -15,12 +15,12 @@ const FilterButtonContainer = ({ children }) => {
 };
 
 const FilterButton = ({ action, active, filter }) => {
-   return (
+  return (
     <button
     onClick={action}
       className={
         `hover:text-white cursor-pointer transition-all duration-300 ease-in-out ` +
-        (active === filter
+  (active === filter
           ? `text-blue-400`
           : `text-gray-400`)
       }
