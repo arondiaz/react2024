@@ -3,7 +3,7 @@ import Title from "./components/Title";
 import Input from "./components/Input";
 import ContainerTasks from "./components/ContainerTasks";
 import { tasksDB } from "../../todo-list-2/src/db.js/tasksDB";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [todo, setTodo] = useState(tasksDB);
@@ -29,20 +29,27 @@ function App() {
     setTodo(deleteTask);
   };
 
-  const [filter, setFilter] = useState("All");
+  const [filterUser, setFilterUser] = useState("All");
+  const [showOnlyFilteredTask, setShowOnlyFilteredTask] = useState(todo);
 
-  const filterSelected = (filterSelected) => {
-    const updatedFilter = filterSelected;
-    setFilter(updatedFilter);
+  useEffect(() => {
+    if (filterUser === "All") {
+      setShowOnlyFilteredTask(todo);
 
-    if (filterSelected === "All") {
-      console.log(filterSelected);
-    } else if (filterSelected === "In progress") {
-      console.log(filterSelected);
-    } else if (filterSelected === "Completed") {
-      console.log(filterSelected);
+    } else if (filterUser === "In progress") {
+      const inProgessTask = todo.filter((oneTask) => {
+        return oneTask.completed === false;
+      });
+      setShowOnlyFilteredTask(inProgessTask);
+      
+    } else if (filterUser === "Completed") {
+      const completedTask = todo.filter((oneTask) => {
+        return oneTask.completed === true;
+      });
+
+      setShowOnlyFilteredTask(completedTask);
     }
-  };
+  }, [todo, filterUser]);
 
   const handleSetComplete = (id) => {
     const searchTask = todo.map((oneTask) => {
@@ -56,7 +63,6 @@ function App() {
     });
 
     setTodo(searchTask);
-    
   };
 
   return (
@@ -67,8 +73,10 @@ function App() {
         <ContainerTasks
           todo={todo}
           handleDeleteTask={handleDeleteTask}
-          filterSelected={filterSelected}
+          setFilterUser={setFilterUser}
           handleSetComplete={handleSetComplete}
+          filterUser={filterUser}
+          showOnlyFilteredTask={showOnlyFilteredTask}
         />
       </div>
     </div>

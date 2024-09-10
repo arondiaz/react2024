@@ -7,10 +7,12 @@ const ContainerFilter = ({ children }) => {
   return <div className="flex flex-row space-x-4 mx-8">{children}</div>;
 };
 
-const TypeFilter = ({ action, filter }) => {
- 
+const TypeFilter = ({ action, active, filter }) => {
   return (
-    <button onClick={action} className="text-white">
+    <button
+      onClick={action}
+      className={`text-white + ${active === filter ? "text-white" : "text-gray-500"}  `}
+    >
       {filter}
     </button>
   );
