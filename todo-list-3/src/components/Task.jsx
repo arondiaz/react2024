@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Task = ({ todo }) => {
+const Task = ({ todo, handleDeleteTask }) => {
   const { id, title, completed } = todo;
   return (
     <div className="flex items-center justify-between max-w-xl text-white mt-2 ">
@@ -13,7 +13,7 @@ const Task = ({ todo }) => {
         <p className="mx-4">{title}</p>
       </div>
 
-      <p className="mx-4 cursor-pointer hover:bg-blue-600 rounded-xl p-2">X</p>
+      <p className="mx-4 cursor-pointer hover:bg-blue-600 rounded-xl p-2 " onClick={()=>handleDeleteTask(id)}>X</p>
     </div>
   );
 };

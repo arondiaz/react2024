@@ -21,12 +21,20 @@ function App() {
     setTodo(updatedTask);
   };
 
+  const handleDeleteTask = (id) => {
+    const deleteTask = todo.filter((oneTask) => {
+      return oneTask.id !== id;
+    });
+
+    setTodo(deleteTask);
+  };
+
   return (
     <div className="bg-blue-950 min-h-screen h-full flex justify-center items-center">
       <div className="container flex flex-col justify-center items-center">
         <Title />
         <Input addInputUserTask={addInputUserTask} />
-        <ContainerTasks todo={todo} />
+        <ContainerTasks todo={todo} handleDeleteTask={handleDeleteTask} />
       </div>
     </div>
   );
