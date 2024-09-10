@@ -5,7 +5,7 @@ import Calculator from "./Components/Calculator";
 import { useState } from "react";
 
 function App() {
-  const [value, setValues] = useState([
+  const numbersAndOperators = [
     1,
     2,
     3,
@@ -20,13 +20,27 @@ function App() {
     "-",
     "*",
     "/",
-    "=",
-  ]);
+  ];
+
+  const equal = ["="];
 
   const [clickUser, setClickUser] = useState("");
 
   const handleUserValue = (input) => {
     setClickUser((prev) => prev + input);
+  };
+
+  const handleResolve = () => {
+    if (clickUser === "") {
+      return;
+    }
+    const resolved = eval(clickUser);
+
+    setClickUser(resolved);
+  };
+
+  const handleClean = () => {
+    setClickUser("");
   };
 
   return (
@@ -35,9 +49,12 @@ function App() {
 
       <ContainerCalculator>
         <Calculator
-          value={value}
+          numbersAndOperators={numbersAndOperators}
           handleUserValue={handleUserValue}
           clickUser={clickUser}
+          equal={equal}
+          handleResolve={handleResolve}
+          handleClean={handleClean}
         />
       </ContainerCalculator>
     </div>
