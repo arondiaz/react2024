@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import { CounterTask, ContainerFilter, TypeFilter } from "./FilterItems";
 
-const FilterContainer = () => {
+const FilterContainer = ({ todo }) => {
+
   return (
     <div className="flex flex-row justify-between mt-4">
       <div className="flex justify-between items-center">
-        <CounterTask />
+        <CounterTask todo={todo.length} />
       </div>
       <ContainerFilter>
         <TypeFilter filter={"All"} />

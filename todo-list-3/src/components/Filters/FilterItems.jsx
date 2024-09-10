@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-const CounterTask = () => {
-  return <p className="text-gray-400 mx-4">Task 0</p>;
+const CounterTask = ({ todo }) => {
+  return <p className="text-gray-400 mx-4">Task {todo}</p>;
 };
 
 const ContainerFilter = ({ children }) => {
