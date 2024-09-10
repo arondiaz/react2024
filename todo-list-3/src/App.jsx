@@ -34,6 +34,7 @@ function App() {
   const filterSelected = (filterSelected) => {
     const updatedFilter = filterSelected;
     setFilter(updatedFilter);
+
     if (filterSelected === "All") {
       console.log(filterSelected);
     } else if (filterSelected === "In progress") {
@@ -41,6 +42,21 @@ function App() {
     } else if (filterSelected === "Completed") {
       console.log(filterSelected);
     }
+  };
+
+  const handleSetComplete = (id) => {
+    const searchTask = todo.map((oneTask) => {
+      if (oneTask.id === id) {
+        return {
+          ...oneTask,
+          completed: !oneTask.completed,
+        };
+      }
+      return oneTask;
+    });
+
+    setTodo(searchTask);
+    
   };
 
   return (
@@ -52,6 +68,7 @@ function App() {
           todo={todo}
           handleDeleteTask={handleDeleteTask}
           filterSelected={filterSelected}
+          handleSetComplete={handleSetComplete}
         />
       </div>
     </div>

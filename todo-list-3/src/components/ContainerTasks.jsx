@@ -2,12 +2,12 @@
 import FilterContainer from "./Filters/FilterContainer";
 import Task from "./Task";
 
-const ContainerTasks = ({ todo, handleDeleteTask, filterSelected }) => {
+const ContainerTasks = ({ todo, handleDeleteTask, filterSelected, handleSetComplete }) => {
   return (
     <div className="bg-blue-900 rounded-xl flex flex-col max-w-3xl mt-4">
       {todo &&
         todo.map((todo) => (
-          <Task todo={todo} key={todo.id} handleDeleteTask={handleDeleteTask} />
+          <Task todo={todo} key={todo.id} handleDeleteTask={handleDeleteTask} handleSetComplete={handleSetComplete} />
         ))}
 
       <FilterContainer todo={todo} filterSelected={filterSelected} />
