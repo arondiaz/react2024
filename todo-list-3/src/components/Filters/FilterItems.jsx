@@ -7,8 +7,13 @@ const ContainerFilter = ({ children }) => {
   return <div className="flex flex-row space-x-4 mx-8">{children}</div>;
 };
 
-const TypeFilter = ({ filter }) => {
-  return <button className="text-white"> {filter}</button>;
+const TypeFilter = ({ action, filter }) => {
+ 
+  return (
+    <button onClick={action} className="text-white">
+      {filter}
+    </button>
+  );
 };
 
 export { CounterTask, ContainerFilter, TypeFilter };

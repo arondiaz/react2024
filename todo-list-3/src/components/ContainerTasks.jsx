@@ -2,7 +2,7 @@
 import FilterContainer from "./Filters/FilterContainer";
 import Task from "./Task";
 
-const ContainerTasks = ({ todo, handleDeleteTask }) => {
+const ContainerTasks = ({ todo, handleDeleteTask, filterSelected }) => {
   return (
     <div className="bg-blue-900 rounded-xl flex flex-col max-w-3xl mt-4">
       {todo &&
@@ -10,7 +10,7 @@ const ContainerTasks = ({ todo, handleDeleteTask }) => {
           <Task todo={todo} key={todo.id} handleDeleteTask={handleDeleteTask} />
         ))}
 
-      <FilterContainer todo={todo} />
+      <FilterContainer todo={todo} filterSelected={filterSelected} />
     </div>
   );
 };

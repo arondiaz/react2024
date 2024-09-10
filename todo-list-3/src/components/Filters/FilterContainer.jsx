@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { CounterTask, ContainerFilter, TypeFilter } from "./FilterItems";
 
-const FilterContainer = ({ todo }) => {
+const FilterContainer = ({ todo, filterSelected }) => {
 
   return (
     <div className="flex flex-row justify-between mt-4">
@@ -9,9 +9,9 @@ const FilterContainer = ({ todo }) => {
         <CounterTask todo={todo.length} />
       </div>
       <ContainerFilter>
-        <TypeFilter filter={"All"} />
-        <TypeFilter filter={"In progress"} />
-        <TypeFilter filter={"Completed"} />
+        <TypeFilter action={() => filterSelected("All")} filter={"All"} />
+        <TypeFilter action={() => filterSelected("In progress")} filter={"In progress"} />
+        <TypeFilter action={() => filterSelected("Completed")}  filter={"Completed"} />
       </ContainerFilter>
       <button className="mx-4 text-gray-300">clear</button>
     </div>

@@ -29,12 +29,30 @@ function App() {
     setTodo(deleteTask);
   };
 
+  const [filter, setFilter] = useState("All");
+
+  const filterSelected = (filterSelected) => {
+    const updatedFilter = filterSelected;
+    setFilter(updatedFilter);
+    if (filterSelected === "All") {
+      console.log(filterSelected);
+    } else if (filterSelected === "In progress") {
+      console.log(filterSelected);
+    } else if (filterSelected === "Completed") {
+      console.log(filterSelected);
+    }
+  };
+
   return (
     <div className="bg-blue-950 min-h-screen h-full flex justify-center items-center">
       <div className="container flex flex-col justify-center items-center">
         <Title />
         <Input addInputUserTask={addInputUserTask} />
-        <ContainerTasks todo={todo} handleDeleteTask={handleDeleteTask} />
+        <ContainerTasks
+          todo={todo}
+          handleDeleteTask={handleDeleteTask}
+          filterSelected={filterSelected}
+        />
       </div>
     </div>
   );
