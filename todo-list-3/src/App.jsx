@@ -35,13 +35,11 @@ function App() {
   useEffect(() => {
     if (filterUser === "All") {
       setShowOnlyFilteredTask(todo);
-
     } else if (filterUser === "In progress") {
       const inProgessTask = todo.filter((oneTask) => {
         return oneTask.completed === false;
       });
       setShowOnlyFilteredTask(inProgessTask);
-      
     } else if (filterUser === "Completed") {
       const completedTask = todo.filter((oneTask) => {
         return oneTask.completed === true;
@@ -65,6 +63,14 @@ function App() {
     setTodo(searchTask);
   };
 
+  const clearCompletedTask = () => {
+    const completedTask = todo.filter((oneTask) => {
+      return oneTask.completed !== true;
+    });
+
+    setTodo(completedTask);
+  };
+
   return (
     <div className="bg-blue-950 min-h-screen h-full flex justify-center items-center">
       <div className="container flex flex-col justify-center items-center">
@@ -77,6 +83,7 @@ function App() {
           handleSetComplete={handleSetComplete}
           filterUser={filterUser}
           showOnlyFilteredTask={showOnlyFilteredTask}
+          clearCompletedTask={clearCompletedTask}
         />
       </div>
     </div>

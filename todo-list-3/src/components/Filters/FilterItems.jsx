@@ -11,7 +11,9 @@ const TypeFilter = ({ action, active, filter }) => {
   return (
     <button
       onClick={action}
-      className={`text-white + ${active === filter ? "text-white" : "text-gray-500"}  `}
+      className={`text-white  ${
+        active === filter ? "text-white" : "text-gray-600"
+      }  `}
     >
       {filter}
     </button>

@@ -9,6 +9,7 @@ const ContainerTasks = ({
   handleSetComplete,
   filterUser,
   showOnlyFilteredTask,
+  clearCompletedTask
 }) => {
   return (
     <div className="bg-blue-900 rounded-xl flex flex-col max-w-3xl mt-4">
@@ -27,6 +28,7 @@ const ContainerTasks = ({
         todo={todo}
         setFilterUser={setFilterUser}
         filterUser={filterUser}
+        clearCompletedTask={clearCompletedTask}
       />
     </div>
   );
