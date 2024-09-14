@@ -8,7 +8,11 @@ function App() {
   const [task, setTask] = useState([]);
 
   const addUserTask = (e, setInput) => {
-  
+    const title = e.target.value;
+
+    if (title.trim() === "") {
+      return;
+    }
 
     const idGen = task.length > 0 ? task[task.length - 1].id + 1 : 1;
 
@@ -42,12 +46,20 @@ function App() {
     */
   };
 
+  const deleteClickedTask = (id) => {
+    const restOfTasks = task.filter((oneTask) => {
+      return oneTask.id !== id;
+    });
+
+    setTask(restOfTasks);
+  };
+
   return (
     <div className=" bg-black flex justify-center items-center h-full min-h-screen ">
-      <div className="container flex flex-col justify-center items-center">
+      <div className=" flex flex-col justify-center items-center">
         <Title />
         <Input addUserTask={addUserTask} />
-        <TasksContainer task={task} />
+        <TasksContainer task={task} deleteClickedTask={deleteClickedTask} />
       </div>
     </div>
   );
