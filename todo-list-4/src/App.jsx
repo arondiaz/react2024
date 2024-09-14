@@ -54,12 +54,34 @@ function App() {
     setTask(restOfTasks);
   };
 
+  const markAsCompleted = (id) => {
+    const updatedTasks = task.map((mappingTask) => {
+      // Si el id de la tarea coincide, modifica la tarea
+      if (mappingTask.id === id) {
+        //Devuelve la tarea modificada si el id coincide.
+        return {
+          ...mappingTask,
+          completed: !mappingTask.completed,
+        };
+      }
+
+      //Devuelve la tarea sin cambios si el id no coincide.
+      return mappingTask;
+    });
+
+    setTask(updatedTasks);
+  };
+
   return (
     <div className=" bg-black flex justify-center items-center h-full min-h-screen ">
       <div className=" flex flex-col justify-center items-center">
         <Title />
         <Input addUserTask={addUserTask} />
-        <TasksContainer task={task} deleteClickedTask={deleteClickedTask} />
+        <TasksContainer
+          task={task}
+          deleteClickedTask={deleteClickedTask}
+          markAsCompleted={markAsCompleted}
+        />
       </div>
     </div>
   );
