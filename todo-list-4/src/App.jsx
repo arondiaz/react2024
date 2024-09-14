@@ -7,10 +7,8 @@ import TasksContainer from "./components/TasksContainer";
 function App() {
   const [task, setTask] = useState([]);
 
-  const addUserTask = (e) => {
-    if (e.code !== "Enter") {
-      return;
-    }
+  const addUserTask = (e, setInput) => {
+  
 
     const idGen = task.length > 0 ? task[task.length - 1].id + 1 : 1;
 
@@ -20,11 +18,28 @@ function App() {
       completed: false,
     };
 
-    const stateCopy = [...task, newObj];
+    setTask((prevTask) => [...prevTask, newObj]);
 
-    setTask(stateCopy);
+    setInput("");
 
-    console.log(task);
+    /*
+
+    formas menos eficientes.
+
+     const copyOfState = [...task];
+
+     copyOfState.push(newObj)
+
+     setTask(copyOfState)
+    --------------------------
+
+
+     const stateCopy = [...task, newObj];
+
+     setTask(stateCopy);
+
+     console.log(task);
+    */
   };
 
   return (
