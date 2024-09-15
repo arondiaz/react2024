@@ -2,7 +2,7 @@ import tick from "../assets/tick.png";
 import delete_icon from "../assets/delete.png";
 import not_tick from "../assets/not_tick.png";
 
-const TodoItems = ({ oneTask }) => {
+const TodoItems = ({ oneTask, deleteTodo }) => {
   const { id, title, completed } = oneTask;
   return (
     <div className="flex items-center my-3 gap-2">
@@ -16,7 +16,7 @@ const TodoItems = ({ oneTask }) => {
         <p className="text-gray-700 ml-4 text-lg">{title}</p>
       </div>
 
-      <img src={delete_icon} alt="" className="w-3.5 cursor-pointer" />
+      <img src={delete_icon} alt="" className="w-3.5 cursor-pointer" onClick={()=> deleteTodo(id)} />
     </div>
   );
 };

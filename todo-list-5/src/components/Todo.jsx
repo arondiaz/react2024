@@ -25,6 +25,12 @@ const Todo = () => {
     inputRef.current.value = "";
   };
 
+  const deleteTodo = (id) => {
+    setTodo((prev) => {
+     return prev.filter((todo) => todo.id !== id);
+    });
+  };
+
   return (
     <div className="bg-slate-400 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-md ">
       <div className="flex items-center mt-7 gap-2">
@@ -49,7 +55,7 @@ const Todo = () => {
 
       <div>
         {todo.map((oneTask) => {
-          return <TodoItems key={oneTask.id} oneTask={oneTask} />;
+          return <TodoItems key={oneTask.id} oneTask={oneTask} deleteTodo={deleteTodo}/>;
         })}
       </div>
     </div>
