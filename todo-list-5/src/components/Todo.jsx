@@ -27,9 +27,25 @@ const Todo = () => {
 
   const deleteTodo = (id) => {
     setTodo((prev) => {
-     return prev.filter((todo) => todo.id !== id);
+      return prev.filter((todo) => todo.id !== id);
     });
   };
+
+  const toggle = (id) => {
+    setTodo((prevTask) => {
+      return prevTask.map((task) => {
+        if (task.id === id) {
+          return { ...task, complete: !task.complete };
+        }
+
+        return task;
+      });
+    });
+  };
+
+  // useEffect(() => {
+  //   console.log(todo);
+  // }, [todo]);
 
   return (
     <div className="bg-slate-400 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-md ">
@@ -55,7 +71,14 @@ const Todo = () => {
 
       <div>
         {todo.map((oneTask) => {
-          return <TodoItems key={oneTask.id} oneTask={oneTask} deleteTodo={deleteTodo}/>;
+          return (
+            <TodoItems
+              key={oneTask.id}
+              oneTask={oneTask}
+              deleteTodo={deleteTodo}
+              toggle={toggle}
+            />
+          );
         })}
       </div>
     </div>
