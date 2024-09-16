@@ -24,7 +24,7 @@ function App() {
     <div className="bg-lime-900 h-full min-h-screen flex justify-center items-center flex-col">
       <div className="bg-gray-400 w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-3xl justify-items-start">
         <Title />
-        <TodoMainContainer addTodo={addTodo} />
+        <TodoMainContainer addTodo={addTodo} todos={todos}/>
       </div>
 
       <p>Desing is my passion..</p>
