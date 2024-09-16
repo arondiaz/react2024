@@ -1,9 +1,13 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import todo_icon from "../assets/todo_icon.png";
 import TodoItems from "./TodoItems";
 
 const Todo = () => {
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos"))
+      : []
+  );
 
   const inputRef = useRef();
 
@@ -43,9 +47,9 @@ const Todo = () => {
     });
   };
 
-  // useEffect(() => {
-  //   console.log(todo);
-  // }, [todo]);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
 
   return (
     <div className="bg-slate-400 place-self-center w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-md ">
