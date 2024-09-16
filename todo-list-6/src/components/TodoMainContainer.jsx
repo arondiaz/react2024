@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import TodoList from "./TodoList";
 
-const TodoMainContainer = ({ addTodo, todos }) => {
+const TodoMainContainer = ({ addTodo, todos, deleteTodo }) => {
   const inputRef = useRef();
 
   return (
@@ -23,7 +23,7 @@ const TodoMainContainer = ({ addTodo, todos }) => {
       </div>
 
       <div className="flex justify-between items-center flex-col">
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} deleteTodo={deleteTodo}/>
       </div>
     </div>
   );
