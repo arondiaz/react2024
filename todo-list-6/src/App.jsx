@@ -26,6 +26,16 @@ function App() {
     });
   };
 
+  const handleIsComplete = (id) => {
+    setTodos((prev) =>
+      prev.map((oneTodo) =>
+        oneTodo.id === id
+          ? { ...oneTodo, isCompleted: !oneTodo.isCompleted }
+          : oneTodo
+      )
+    );
+  };
+
   return (
     <div className="bg-lime-900 h-full min-h-screen flex justify-center items-center flex-col">
       <div className="bg-gray-400 w-11/12 max-w-md flex flex-col p-7 min-h-[550px] rounded-3xl justify-items-start">
@@ -34,6 +44,7 @@ function App() {
           addTodo={addTodo}
           todos={todos}
           deleteTodo={deleteTodo}
+          handleIsComplete={handleIsComplete}
         />
       </div>
 
