@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Title from "./components/Title";
 import TodoMainContainer from "./components/TodoMainContainer";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos"))
+      : []
+  );
 
   const addTodo = (inputRef) => {
     let inputUser = inputRef.current.value;
@@ -35,6 +39,10 @@ function App() {
       )
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="bg-lime-900 h-full min-h-screen flex justify-center items-center flex-col">
